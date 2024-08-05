@@ -6,14 +6,20 @@ const app =express()
 const server=createServer(app)
 
 
-const io = new Server(server);
+const io = new Server(server, {
+  cors: {
+    origin: 'https://chatb-omega.vercel.app', // Your frontend URL
+    methods: ['GET', 'POST'],
+    allowedHeaders: ['my-custom-header'],
+    credentials: true
+  }
+});
 
 app.use(cors({
   origin: 'https://chatb-omega.vercel.app', // Your frontend URL
-  methods: ['GET', 'POST']
+  methods: ['GET', 'POST'],
+  credentials: true
 }));
-
-io.origins(['https://chatb-omega.vercel.app']); // For Socket.io v4 and below
 
 io.on("connection",(socket)=>{
   socket.emit("hello", socket.id)
