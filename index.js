@@ -4,11 +4,16 @@ import { Server } from 'socket.io'
 import cors from "cors"
 const app =express()
 const server=createServer(app)
-app.use(cors({
-  origin: "https://chatb-omega.vercel.app/" // Replace with your client URL
-}));
 
-const io=new Server(server, {cors:{origin: "https://chatb-omega.vercel.app/",methods:["GET", "POST"] , credentials: true}} )
+
+const io = new Server(server, {
+  cors: {
+    origin: 'https://chatb-omega.vercel.app', // Your frontend URL
+    methods: ['GET', 'POST']
+  }
+});
+
+app.use(cors());
 
 io.on("connection",(socket)=>{
   socket.emit("hello", socket.id)
