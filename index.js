@@ -5,10 +5,10 @@ import cors from "cors"
 const app =express()
 const server=createServer(app)
 app.use(cors({
-  origin: "https://chatb-git-main-zeshan-afzals-projects.vercel.app/" // Replace with your client URL
+  origin: "https://chatb-omega.vercel.app/" // Replace with your client URL
 }));
 
-const io=new Server(server, {cors:{origin: "https://chatb-git-main-zeshan-afzals-projects.vercel.app/",methods:["GET", "POST"] , credentials: true}} )
+const io=new Server(server, {cors:{origin: "https://chatb-omega.vercel.app/",methods:["GET", "POST"] , credentials: true}} )
 
 io.on("connection",(socket)=>{
   socket.emit("hello", socket.id)
