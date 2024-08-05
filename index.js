@@ -11,7 +11,7 @@ const io = new Server(server, {
     origin: 'https://chatb-omega.vercel.app', // Your frontend URL
     methods: ['GET', 'POST'],
     allowedHeaders: ['my-custom-header'],
-    credentials: true
+    credentials: true 
   }
 });
 
@@ -33,13 +33,17 @@ io.on("connection",(socket)=>{
 })
 
 
-app.get("/",(req, res)=>{
- res.send("heldfdfow")
 
-})
 
 
 server.listen(3000, ()=>{
  console.log("app is listi n on threr")
 
 })
+
+
+
+
+// git add .
+// git commit -m "Update Socket.IO configuration"
+// git push origin main
